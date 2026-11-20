@@ -5,4 +5,4 @@ version: "0"
 dependencies:
   - name: pinot
     repository: https://raw.githubusercontent.com/apache/pinot/master/helm/
-    version: "*.*.*"
+    version: "0.3.5"
