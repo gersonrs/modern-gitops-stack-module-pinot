@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.0.0](https://github.com/gersonrs/modern-gitops-stack-module-pinot/compare/v1.1.1...v2.0.0) (2026-11-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* provider major bumps and a stricter Terraform baseline; consumers must run `terraform init -upgrade`.
+
+### 🚀 New Features
+
+* add namespace_labels variable to all modules ([657b49f](https://github.com/gersonrs/modern-gitops-stack-module-pinot/commit/657b49f1687c7cf4b5f680883d840228d8249aca))
+* upgrade charts, providers and Terraform baseline ([#5](https://github.com/gersonrs/modern-gitops-stack-module-pinot/issues/5)) ([a0b4cbb](https://github.com/gersonrs/modern-gitops-stack-module-pinot/commit/a0b4cbb29f8a6236c550ef23a80e432c38f6c4f8))
+
+
+### 📦 CI Improvements
+
+* run release-please with GITHUB_TOKEN ([#6](https://github.com/gersonrs/modern-gitops-stack-module-pinot/issues/6)) ([7b8f20f](https://github.com/gersonrs/modern-gitops-stack-module-pinot/commit/7b8f20f8c5f73579a0d445c230ecc441f228ffe1))
+
 ## [1.1.1](https://github.com/GersonRS/modern-gitops-stack-module-pinot/compare/v1.1.0...v1.1.1) (2025-02-08)
 
 
