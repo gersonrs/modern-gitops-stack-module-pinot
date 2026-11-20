@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/gersonrs/modern-gitops-stack-module-pinot/compare/v2.0.0...v2.0.1) (2026-11-20)
+
+
+### 🔥 Bug Fixes
+
+* use kubernetes_service_v1 data source ([#8](https://github.com/gersonrs/modern-gitops-stack-module-pinot/issues/8)) ([4dbfced](https://github.com/gersonrs/modern-gitops-stack-module-pinot/commit/4dbfcede3399f617aad73a914fd2b93f198bc21b))
+
 ## [2.0.0](https://github.com/gersonrs/modern-gitops-stack-module-pinot/compare/v1.1.1...v2.0.0) (2026-11-20)
 
 
