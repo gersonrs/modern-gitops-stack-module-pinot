@@ -9,7 +9,7 @@ output "cluster_dns" {
 }
 output "cluster_ip" {
   description = "pinot cluster ip internal"
-  value       = data.kubernetes_service.pinot.spec[0].cluster_ip
+  value       = data.kubernetes_service_v1.pinot.spec[0].cluster_ip
 }
 
 output "endpoint" {
