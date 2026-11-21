@@ -4,6 +4,23 @@ locals {
 
   helm_values = [{
     pinot = {
+      # Istio ambient mode tunnels mesh traffic between pods over HBONE on
+      # port 15008. NetworkPolicy is enforced on the host (outside the pod), so
+      # the bundled ZooKeeper policy, which only allows 2181/2888/3888, drops
+      # the tunnelled connection before it reaches the pod and every Pinot
+      # component fails with ZkTimeoutException.
+      # See: https://istio.io/latest/docs/ambient/usage/networkpolicy/
+      zookeeper = {
+        networkPolicy = {
+          extraIngress = [
+            {
+              ports = [
+                { port = 15008, protocol = "TCP" }
+              ]
+            }
+          ]
+        }
+      }
       controller = {
         ingress = {
           v1 = {
