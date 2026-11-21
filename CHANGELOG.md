@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/gersonrs/modern-gitops-stack-module-pinot/compare/v2.0.1...v2.0.2) (2026-11-21)
+
+
+### 🔥 Bug Fixes
+
+* open HBONE port on the bundled ZooKeeper policy ([#10](https://github.com/gersonrs/modern-gitops-stack-module-pinot/issues/10)) ([56d96d5](https://github.com/gersonrs/modern-gitops-stack-module-pinot/commit/56d96d5ff66d14cd997467038ae4edef7ff3d632))
+
 ## [2.0.1](https://github.com/gersonrs/modern-gitops-stack-module-pinot/compare/v2.0.0...v2.0.1) (2026-11-20)
 
 
