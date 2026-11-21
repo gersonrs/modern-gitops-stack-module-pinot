@@ -10,6 +10,38 @@ locals {
       # the tunnelled connection before it reaches the pod and every Pinot
       # component fails with ZkTimeoutException.
       # See: https://istio.io/latest/docs/ambient/usage/networkpolicy/
+      # Broker and minion start a JVM and join the Helix cluster before they
+      # answer /health. The chart defaults (60s initial delay, 10 failures x 10s)
+      # are not enough on a loaded kind node and kubelet SIGTERMs the pod
+      # mid-startup, so give them room to come up.
+      broker = {
+        probes = {
+          liveness = {
+            initialDelaySeconds = 180
+            failureThreshold    = 20
+            periodSeconds       = 20
+          }
+          readiness = {
+            initialDelaySeconds = 180
+            failureThreshold    = 20
+            periodSeconds       = 20
+          }
+        }
+      }
+      minion = {
+        probes = {
+          liveness = {
+            initialDelaySeconds = 180
+            failureThreshold    = 20
+            periodSeconds       = 20
+          }
+          readiness = {
+            initialDelaySeconds = 180
+            failureThreshold    = 20
+            periodSeconds       = 20
+          }
+        }
+      }
       zookeeper = {
         networkPolicy = {
           extraIngress = [
