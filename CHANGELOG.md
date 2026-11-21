@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/gersonrs/modern-gitops-stack-module-pinot/compare/v2.0.2...v2.0.3) (2026-11-21)
+
+
+### 🔥 Bug Fixes
+
+* give broker and minion time to start before probes fail ([#12](https://github.com/gersonrs/modern-gitops-stack-module-pinot/issues/12)) ([3947902](https://github.com/gersonrs/modern-gitops-stack-module-pinot/commit/3947902bd2fa00c894118ea0286809a379f58513))
+
 ## [2.0.2](https://github.com/gersonrs/modern-gitops-stack-module-pinot/compare/v2.0.1...v2.0.2) (2026-11-21)
 
 
