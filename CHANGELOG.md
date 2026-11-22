@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/gersonrs/modern-gitops-stack-module-pinot/compare/v2.0.3...v3.0.0) (2026-11-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* the ingress object and its pinot-ingres-tls secret are gone; the host is now served by the Istio gateway, so callers must pass the gateway values and stop relying on the Traefik ingress class.
+
+### 🚀 New Features
+
+* expose Pinot through the Istio gateway instead of Traefik ([#14](https://github.com/gersonrs/modern-gitops-stack-module-pinot/issues/14)) ([5d8b3a6](https://github.com/gersonrs/modern-gitops-stack-module-pinot/commit/5d8b3a6b3242bbaaf01458ab2f62dc39aebe0ab6))
+
 ## [2.0.3](https://github.com/gersonrs/modern-gitops-stack-module-pinot/compare/v2.0.2...v2.0.3) (2026-11-21)
 
 
