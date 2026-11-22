@@ -17,13 +17,13 @@ The following requirements are needed by this module:
 
 The following providers are used by this module:
 
-- [[provider_null]] <<provider_null,null>> (3.3.2)
+- [[provider_null]] <<provider_null,null>> (~> 3.3)
 
-- [[provider_argocd]] <<provider_argocd,argocd>> (7.18.0)
+- [[provider_argocd]] <<provider_argocd,argocd>> (~> 7.18)
 
-- [[provider_utils]] <<provider_utils,utils>> (2.7.0)
+- [[provider_utils]] <<provider_utils,utils>> (~> 2.7)
 
-- [[provider_kubernetes]] <<provider_kubernetes,kubernetes>> (3.5.0)
+- [[provider_kubernetes]] <<provider_kubernetes,kubernetes>>
 
 === Resources
 
@@ -33,7 +33,7 @@ The following resources are used by this module:
 - https://registry.terraform.io/providers/argoproj-labs/argocd/latest/docs/resources/project[argocd_project.this] (resource)
 - https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.dependencies] (resource)
 - https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.this] (resource)
-- https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service[kubernetes_service.pinot] (data source)
+- https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service_v1[kubernetes_service_v1.pinot] (data source)
 - https://registry.terraform.io/providers/cloudposse/utils/latest/docs/data-sources/deep_merge_yaml[utils_deep_merge_yaml.values] (data source)
 
 === Required Inputs
@@ -94,7 +94,7 @@ Description: Override of target revision of the application chart.
 
 Type: `string`
 
-Default: `"v1.1.1"`
+Default: `"v2.0.3"`
 
 ==== [[input_namespace]] <<input_namespace,namespace>>
 
@@ -191,6 +191,22 @@ object({
 
 Default: `null`
 
+==== [[input_gateway_name]] <<input_gateway_name,gateway_name>>
+
+Description: Name of the Istio Gateway resource to attach the HTTPRoute to.
+
+Type: `string`
+
+Default: `"istio-gateway"`
+
+==== [[input_gateway_namespace]] <<input_gateway_namespace,gateway_namespace>>
+
+Description: Namespace of the Istio Gateway resource.
+
+Type: `string`
+
+Default: `"istio-ingress"`
+
 === Outputs
 
 The following outputs are exported:
@@ -234,10 +250,10 @@ Description: pinot endpoint external
 [cols="a,a",options="header,autowidth"]
 |===
 |Name |Version
-|[[provider_null]] <<provider_null,null>> |3.3.2
-|[[provider_argocd]] <<provider_argocd,argocd>> |7.18.0
-|[[provider_utils]] <<provider_utils,utils>> |2.7.0
-|[[provider_kubernetes]] <<provider_kubernetes,kubernetes>> |3.5.0
+|[[provider_null]] <<provider_null,null>> |~> 3.3
+|[[provider_argocd]] <<provider_argocd,argocd>> |~> 7.18
+|[[provider_utils]] <<provider_utils,utils>> |~> 2.7
+|[[provider_kubernetes]] <<provider_kubernetes,kubernetes>> |n/a
 |===
 
 = Resources
@@ -249,7 +265,7 @@ Description: pinot endpoint external
 |https://registry.terraform.io/providers/argoproj-labs/argocd/latest/docs/resources/project[argocd_project.this] |resource
 |https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.dependencies] |resource
 |https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.this] |resource
-|https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service[kubernetes_service.pinot] |data source
+|https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service_v1[kubernetes_service_v1.pinot] |data source
 |https://registry.terraform.io/providers/cloudposse/utils/latest/docs/data-sources/deep_merge_yaml[utils_deep_merge_yaml.values] |data source
 |===
 
@@ -297,7 +313,7 @@ Description: pinot endpoint external
 |[[input_target_revision]] <<input_target_revision,target_revision>>
 |Override of target revision of the application chart.
 |`string`
-|`"v1.1.1"`
+|`"v2.0.3"`
 |no
 
 |[[input_namespace]] <<input_namespace,namespace>>
@@ -385,6 +401,18 @@ object({
 ----
 
 |`null`
+|no
+
+|[[input_gateway_name]] <<input_gateway_name,gateway_name>>
+|Name of the Istio Gateway resource to attach the HTTPRoute to.
+|`string`
+|`"istio-gateway"`
+|no
+
+|[[input_gateway_namespace]] <<input_gateway_namespace,gateway_namespace>>
+|Namespace of the Istio Gateway resource.
+|`string`
+|`"istio-ingress"`
 |no
 
 |===

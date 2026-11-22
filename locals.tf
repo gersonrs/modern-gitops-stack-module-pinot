@@ -54,30 +54,11 @@ locals {
         }
       }
       controller = {
+        # Exposure is handled by the HTTPRoute below, served by the Istio
+        # gateway, so the chart's own Ingress stays disabled.
         ingress = {
           v1 = {
-            # -- Specifies if you want to create an ingress access
-            enabled : true
-            # -- New style ingress class name. Only possible if you use K8s 1.18.0 or later version
-            ingressClassName : "traefik"
-            # -- Additional ingress annotations
-            annotations = {
-              "cert-manager.io/cluster-issuer"                   = "${var.cluster_issuer}"
-              "traefik.ingress.kubernetes.io/router.entrypoints" = "websecure"
-              "traefik.ingress.kubernetes.io/router.tls"         = "true"
-            }
-            hosts = [
-              local.domain,
-              local.domain_full,
-            ]
-            # -- Ingress tls configuration for https access
-            tls = [{
-              secretName = "pinot-ingres-tls"
-              hosts = [
-                local.domain,
-                local.domain_full
-              ]
-            }]
+            enabled : false
           }
         }
         # extra = {
@@ -115,6 +96,15 @@ locals {
       #     EOT
       #   }
       # }
+    }
+  }]
+
+  helm_values_httproute = [{
+    httproute = {
+      enabled           = true
+      host              = local.domain
+      gateway_name      = var.gateway_name
+      gateway_namespace = var.gateway_namespace
     }
   }]
 }
