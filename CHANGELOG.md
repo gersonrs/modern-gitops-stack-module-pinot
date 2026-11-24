@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/gersonrs/modern-gitops-stack-module-pinot/compare/v3.0.0...v3.0.1) (2026-11-24)
+
+
+### 📚 Documentation
+
+* add usage and dependencies to the module documentation ([#16](https://github.com/gersonrs/modern-gitops-stack-module-pinot/issues/16)) ([314756e](https://github.com/gersonrs/modern-gitops-stack-module-pinot/commit/314756e675f0d09f6156fe0e19b7a91a1224fd6f))
+
 ## [3.0.0](https://github.com/gersonrs/modern-gitops-stack-module-pinot/compare/v2.0.3...v3.0.0) (2026-11-22)
 
 
