@@ -1,4 +1,48 @@
 = modern-gitops-stack-module-pinot
+// Document attributes to replace along the document
+:pinot-chart-version: 0.3.5
+:original-repo-url: https://github.com/apache/pinot
+
+A https://modern-gitops-stack.io[Modern GitOps Stack] module to deploy Apache Pinot, a realtime distributed OLAP datastore for low-latency analytics.
+
+The pinot chart used by this module is shipped in this repository as well, in order to avoid any unwanted behaviors caused by unsupported versions.
+
+[cols="1,1,1",options="autowidth,header"]
+|===
+|Current Chart Version |Original Repository |Default Values
+|*0.3.5* |https://github.com/apache/pinot/tree/main/helm/pinot[pinot] |https://artifacthub.io/packages/helm/pinot/pinot/0.3.5?modal=values[`values.yaml`]
+|===
+
+== Usage
+
+This module can be declared by adding the following block to your Terraform configuration:
+
+[source,terraform]
+----
+module "pinot" {
+  source = "git::https://github.com/GersonRS/modern-gitops-stack-module-pinot.git?ref=<RELEASE>"
+
+  cluster_name   = local.cluster_name
+  base_domain    = local.base_domain
+  subdomain      = local.subdomain
+  cluster_issuer = local.cluster_issuer
+  app_autosync   = local.app_autosync
+
+  dependency_ids = {
+    istio = module.istio.id
+  }
+}
+----
+
+The application is deployed to the `datastore` namespace.
+
+== Technical Reference
+
+=== Dependencies
+
+==== `module.istio.id`
+
+Pinot is exposed through the Istio gateway.
 
 // BEGIN_TF_DOCS
 === Requirements
